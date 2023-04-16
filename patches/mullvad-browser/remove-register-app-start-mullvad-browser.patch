@@ -26,7 +26,7 @@
        *) # No more options
            break
            ;;
-@@ -227,33 +215,6 @@
+@@ -227,48 +215,16 @@
    ln -nsf ~/.config/ibus/bus .config/ibus
  fi
  
@@ -57,6 +57,22 @@
 -	exit 0
 -fi
 -
- HOME="${PWD}"
- export HOME
+-HOME="${PWD}"
+-export HOME
+-
  
+ 
+ 
+ # Set up custom bundled fonts. See fonts-conf(5).
+-export FONTCONFIG_PATH="${HOME}/fontconfig"
++export FONTCONFIG_PATH="${PWD}/fontconfig"
+ export FONTCONFIG_FILE="fonts.conf"
+ 
+ # Avoid overwriting user's dconf values. Fixes #27903.
+ export GSETTINGS_BACKEND=memory
+ 
+-cd "${HOME}"
+-
+ # We pass all additional command-line arguments we get to Firefox.
+ #
+ # The --class parameter was added to fix bug trac#11102 (X11).
