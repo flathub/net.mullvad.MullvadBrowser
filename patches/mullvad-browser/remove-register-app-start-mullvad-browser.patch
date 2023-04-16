@@ -1,0 +1,62 @@
+--- mullvad-browser/Browser/start-mullvad-browser	2023-04-16 00:00:00.0 +0000
++++ mullvad-browser/Browser/start-mullvad-browser.1	2023-04-16 00:00:00.0 +0000
+@@ -97,8 +97,6 @@
+     printf "  --verbose         Display the browser output in the terminal\n"
+     printf "  --log [file]      Record the browser output in file (default: mullvad-browser.log)\n"
+     printf "  --detach          Detach from terminal and run Mullvad Browser in the background.\n"
+-    printf "  --register-app    Register Mullvad Browser as a desktop app for this user\n"
+-    printf "  --unregister-app  Unregister Mullvad Browser as a desktop app for this user\n"
+ }
+ log_output=0
+ show_output=0
+@@ -139,16 +137,6 @@
+           log_output=1
+           shift
+           ;;
+-      --register-app)
+-          register_desktop_app=1
+-          show_output=1
+-          shift
+-          ;;
+-      --unregister-app)
+-          register_desktop_app=-1
+-          show_output=1
+-          shift
+-          ;;
+       *) # No more options
+           break
+           ;;
+@@ -227,33 +215,6 @@
+   ln -nsf ~/.config/ibus/bus .config/ibus
+ fi
+ 
+-# Fix up .desktop Icon and Exec Paths, and update the .desktop file from the
+-# canonical version if it was changed by the updater.
+-cp start-mullvad-browser.desktop ../
+-sed -i -e "s,^Name=.*,Name=Mullvad Browser,g" ../start-mullvad-browser.desktop
+-sed -i -e "s,^Icon=.*,Icon=$PWD/browser/chrome/icons/default/default128.png,g" ../start-mullvad-browser.desktop
+-sed -i -e "s,^Icon=.*,Icon=$PWD/browser/chrome/icons/default/default128.png,g" start-mullvad-browser.desktop
+-sed -i -e "s,^Exec=.*,Exec=sh -c '\"$PWD/start-mullvad-browser\" --detach || ([ !  -x \"$PWD/start-mullvad-browser\" ] \&\& \"\$(dirname \"\$*\")\"/Browser/start-mullvad-browser --detach)' dummy %k,g" ../start-mullvad-browser.desktop
+-
+-if [ "$register_desktop_app" -eq 1 ]; then
+-	mkdir -p "$HOME/.local/share/applications/"
+-	cp ../start-mullvad-browser.desktop "$HOME/.local/share/applications/"
+-	update-desktop-database "$HOME/.local/share/applications/"
+-	printf "Mullvad Browser has been registered as a desktop app for this user in ~/.local/share/applications/\n"
+-	exit 0
+-fi
+-
+-if [ "$register_desktop_app" -eq -1 ]; then
+-	if [ -e "$HOME/.local/share/applications/start-mullvad-browser.desktop" ]; then
+-		rm -f "$HOME/.local/share/applications/start-mullvad-browser.desktop"
+-		update-desktop-database "$HOME/.local/share/applications/"
+-		printf "Mullvad Browser has been removed as a user desktop app (from ~/.local/share/applications/)\n"
+-	else
+-		printf "Mullvad Browser does not appear to be a desktop app (not present in ~/.local/share/applications/)\n"
+-	fi
+-	exit 0
+-fi
+-
+ HOME="${PWD}"
+ export HOME
+ 
