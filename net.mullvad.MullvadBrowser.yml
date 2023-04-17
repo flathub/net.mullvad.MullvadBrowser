@@ -110,4 +110,8 @@ modules:
         dest-filename: mullvad-browser-wrapper
         commands:
           - export TMPDIR="${XDG_RUNTIME_DIR}/app/${FLATPAK_ID}"
+
+          # Mullvad Browser must be launched from the application directory
+          - cd "/app/lib/mullvad-browser"
+
           - exec "/app/lib/mullvad-browser/start-mullvad-browser" "$@"
