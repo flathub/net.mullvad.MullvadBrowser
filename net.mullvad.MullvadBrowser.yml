@@ -70,18 +70,18 @@ modules:
       # Desktop Entry
       - install -Dm644 start-mullvad-browser.desktop "${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop"
       - desktop-file-edit "${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop"
-        --set-key "Exec" --set-value "${FLATPAK_DEST}/bin/mullvadbrowser --detach %u"
-        --set-key "Icon" --set-value "${FLATPAK_ID}"
-        --set-key "Name" --set-value "Mullvad Browser"
+        --set-key "Exec" --set-value "${FLATPAK_DEST}/bin/mullvadbrowser --detach
+        %u" --set-key "Icon" --set-value "${FLATPAK_ID}" --set-key "Name" --set-value
+        "Mullvad Browser"
     sources:
       - type: archive
-        url: https://cdn.mullvad.net/browser/12.0.4/mullvad-browser-linux64-12.0.4_ALL.tar.xz
-        sha256: ab875328d42472a691c22176e6254e412bf054b037b494654380f30b7b6e1b90
+        url: https://cdn.mullvad.net/browser/12.0.5/mullvad-browser-linux64-12.0.5_ALL.tar.xz
+        sha256: 133b36a6324d18e8a7308b24043c298fbd1e29291f715e9908a6fad08e49db7c
         x-checker-data:
           type: json
           url: https://cdn.mullvad.net/browser/update_responses/update_1/release/downloads.json
-          version-query: '.version'
-          url-query: '.downloads.linux64.ALL.binary'
+          version-query: .version
+          url-query: .downloads.linux64.ALL.binary
 
       # Use the upstream launcher, but avoid modifying read-only application files
       # https://github.com/flathub/flathub/pull/4052#issuecomment-1509726091
