@@ -82,6 +82,7 @@ modules:
           url: https://cdn.mullvad.net/browser/update_responses/update_1/release/downloads.json
           version-query: .version
           url-query: .downloads.linux64.ALL.binary
+          is-main-source: true
 
       # Use the upstream launcher, but avoid modifying read-only application files
       # https://github.com/flathub/flathub/pull/4052#issuecomment-1509726091
