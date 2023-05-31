@@ -52,8 +52,8 @@ modules:
   - name: mullvad-browser
     buildsystem: simple
     build-commands:
-      # Remove launcher files that are useless in the context of Flatpak
-      - rm Browser/start-mullvad-browser Browser/start-mullvad-browser.desktop
+      # Remove duplicate desktop entry
+      - rm Browser/start-mullvad-browser.desktop
 
       - mv Browser/ "${FLATPAK_DEST}/lib/mullvad-browser/"
       - install -Dm755 mullvad-browser-wrapper "${FLATPAK_DEST}/bin/mullvadbrowser"
@@ -68,18 +68,25 @@ modules:
       # Desktop Entry
       - install -Dm644 start-mullvad-browser.desktop "${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop"
       - desktop-file-edit "${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop"
-        --set-key "Exec" --set-value "${FLATPAK_DEST}/bin/mullvadbrowser --class \"Mullvad Browser\" --name \"Mullvad Browser\" %u"
-        --set-key "Icon" --set-value "${FLATPAK_ID}"
-        --set-key "Name" --set-value "Mullvad Browser"
+        --set-key "Exec" --set-value "${FLATPAK_DEST}/bin/mullvadbrowser --detach
+        %u" --set-key "Icon" --set-value "${FLATPAK_ID}" --set-key "Name" --set-value
+        "Mullvad Browser"
     sources:
       - type: archive
-        url: https://cdn.mullvad.net/browser/12.0.4/mullvad-browser-linux64-12.0.4_ALL.tar.xz
-        sha256: ab875328d42472a691c22176e6254e412bf054b037b494654380f30b7b6e1b90
+        url: https://cdn.mullvad.net/browser/12.0.6/mullvad-browser-linux64-12.0.6_ALL.tar.xz
+        sha256: 5c4e87154dfc1619e2931187447c48192dd9dd8d893561f4caad8d7a3a9b44e2
         x-checker-data:
           type: json
           url: https://cdn.mullvad.net/browser/update_responses/update_1/release/downloads.json
-          version-query: '.version'
-          url-query: '.downloads.linux64.ALL.binary'
+          version-query: .version
+          url-query: .downloads.linux64.ALL.binary
+          is-main-source: true
+
+      # Use the upstream launcher, but avoid modifying read-only application files
+      # https://github.com/flathub/flathub/pull/4052#issuecomment-1509726091
+      # diff -Naur mullvad-browser/Browser/start-mullvad-browser mullvad-browser/Browser/start-mullvad-browser.1
+      - type: patch
+        path: patches/mullvad-browser/remove-register-app-start-mullvad-browser.patch
 
       - type: file
         url: https://gitlab.torproject.org/tpo/applications/mullvad-browser/-/raw/e712cb197b83778cbda85e96525dd56ada25945e/browser/branding/mb-release/firefox.svg
@@ -96,4 +103,8 @@ modules:
         dest-filename: mullvad-browser-wrapper
         commands:
           - export TMPDIR="${XDG_RUNTIME_DIR}/app/${FLATPAK_ID}"
-          - exec "/app/lib/mullvad-browser/mullvadbrowser" "$@"
+
+          # Mullvad Browser must be launched from the application directory
+          - cd "/app/lib/mullvad-browser"
+
+          - exec "/app/lib/mullvad-browser/start-mullvad-browser" "$@"
