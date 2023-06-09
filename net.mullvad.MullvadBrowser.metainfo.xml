@@ -23,7 +23,8 @@
     <launchable type="desktop-id">net.mullvad.MullvadBrowser.desktop</launchable>
 
     <releases>
-        <release version="12.0.6" date="2023-05-17" />
+        <release version="12.0.7" date="2023-06-09"/>
+        <release version="12.0.6" date="2023-05-17"/>
     </releases>
 
     <project_license>MPL-2.0</project_license>
