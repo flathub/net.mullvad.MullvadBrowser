@@ -59,8 +59,6 @@ modules:
       - install -Dm755 mullvad-browser-wrapper "${FLATPAK_DEST}/bin/mullvadbrowser"
       - install -Dm644 firefox.svg "${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg"
       - install -Dm644 distribution.ini "${FLATPAK_DEST}/lib/mullvad-browser/distribution/distribution.ini"
-      - install -Dm644 policies.json "${FLATPAK_DEST}/lib/mullvad-browser/distribution/policies.json"
-      - install -Dm644 default-preferences.js "${FLATPAK_DEST}/lib/mullvad-browser/defaults/pref/default-preferences.js"
       - install -Dm644 net.mullvad.MullvadBrowser.metainfo.xml "${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml"
 
       # Make it store profiles to `~/.mullvad/mullvadbrowser` instead of `../Data`
@@ -97,12 +95,6 @@ modules:
 
       - type: file
         path: distribution.ini
-
-      - type: file
-        path: policies.json
-
-      - type: file
-        path: default-preferences.js
 
       - type: file
         path: net.mullvad.MullvadBrowser.metainfo.xml
