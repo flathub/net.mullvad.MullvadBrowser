@@ -68,7 +68,7 @@ modules:
       - touch "${FLATPAK_DEST}/lib/mullvad-browser/system-install"
 
       # Desktop Entry
-      - install -Dm644 start-mullvad-browser.desktop "${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop"
+      - install -Dm644 net.mullvad.MullvadBrowser.desktop "${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop"
       - desktop-file-edit "${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop"
         --set-key "Exec" --set-value "${FLATPAK_DEST}/bin/mullvadbrowser --detach
         %u" --set-key "Icon" --set-value "${FLATPAK_ID}" --set-key "Name" --set-value
@@ -106,6 +106,10 @@ modules:
 
       - type: file
         path: net.mullvad.MullvadBrowser.metainfo.xml
+
+      # https://aur.archlinux.org/cgit/aur.git/plain/mullvad-browser.desktop?h=mullvad-browser-bin
+      - type: file
+        path: net.mullvad.MullvadBrowser.desktop
 
       - type: script
         dest-filename: mullvad-browser-wrapper
