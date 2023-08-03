@@ -6,7 +6,7 @@
     <summary>Free the internet from mass surveillance</summary>
     <description>
         <p>
-            NOTE: This is a community effort and is not verified by, affiliated with, or supported by Mullvad VPN.
+            NOTE: This wrapper is not verified by, affiliated with, or supported by Mullvad VPN AB.
         </p>
         <p>
             The Mullvad Browser is a privacy-focused web browser developed in a collaboration
@@ -33,7 +33,7 @@
     </releases>
 
     <project_license>MPL-2.0</project_license>
-    <developer_name>Mullvad (unofficial)</developer_name>
+    <developer_name>Mullvad</developer_name>
 
     <screenshots>
         <screenshot type="default">
