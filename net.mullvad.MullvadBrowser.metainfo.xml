@@ -1,11 +1,13 @@
-<!-- https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html -->
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
     <id>net.mullvad.MullvadBrowser</id>
     <metadata_license>CC0-1.0</metadata_license>
     <name>Mullvad Browser</name>
-    <summary>Free the internet from mass surveillance.</summary>
+    <summary>Free the internet from mass surveillance</summary>
     <description>
+        <p>
+            NOTE: This wrapper is not verified by, affiliated with, or supported by Mullvad VPN AB.
+        </p>
         <p>
             The Mullvad Browser is a privacy-focused web browser developed in a collaboration
             between Mullvad VPN and the Tor Project. It’s designed to minimize tracking and
@@ -24,7 +26,16 @@
     <launchable type="desktop-id">net.mullvad.MullvadBrowser.desktop</launchable>
 
     <releases>
-        <release version="102.9.0esr-12.0-2-build1" date="2023-04-02" />
+        <release version="13.0" date="2023-10-12"/>
+        <release version="12.5.6" date="2023-09-28"/>
+        <release version="12.5.5" date="2023-09-27"/>
+        <release version="12.5.4" date="2023-09-14"/>
+        <release version="12.5.3" date="2023-08-30"/>
+        <release version="12.5.2" date="2023-08-07"/>
+        <release version="12.5.1" date="2023-07-05"/>
+        <release version="12.5" date="2023-06-27"/>
+        <release version="12.0.7" date="2023-06-09"/>
+        <release version="12.0.6" date="2023-05-17"/>
     </releases>
 
     <project_license>MPL-2.0</project_license>

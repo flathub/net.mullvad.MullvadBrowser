@@ -66,20 +66,20 @@ modules:
       - touch "${FLATPAK_DEST}/lib/mullvad-browser/system-install"
 
       # Desktop Entry
-      - install -Dm644 start-mullvad-browser.desktop "${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop"
+      - install -Dm644 net.mullvad.MullvadBrowser.desktop "${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop"
       - desktop-file-edit "${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop"
         --set-key "Exec" --set-value "${FLATPAK_DEST}/bin/mullvadbrowser --detach
         %u" --set-key "Icon" --set-value "${FLATPAK_ID}" --set-key "Name" --set-value
         "Mullvad Browser"
     sources:
       - type: archive
-        url: https://cdn.mullvad.net/browser/12.0.6/mullvad-browser-linux64-12.0.6_ALL.tar.xz
-        sha256: 5c4e87154dfc1619e2931187447c48192dd9dd8d893561f4caad8d7a3a9b44e2
+        url: https://cdn.mullvad.net/browser/13.0/mullvad-browser-linux-x86_64-13.0.tar.xz
+        sha256: 62d9068129d0549f70b5a9833ad2d13ae7e13c9f4a8b357c8f990adba889f996
         x-checker-data:
           type: json
           url: https://cdn.mullvad.net/browser/update_responses/update_1/release/downloads.json
           version-query: .version
-          url-query: .downloads.linux64.ALL.binary
+          url-query: .downloads."linux-x86_64".ALL.binary
           is-main-source: true
 
       # Use the upstream launcher, but avoid modifying read-only application files
@@ -98,6 +98,10 @@ modules:
 
       - type: file
         path: net.mullvad.MullvadBrowser.metainfo.xml
+
+      # https://aur.archlinux.org/cgit/aur.git/plain/mullvad-browser.desktop?h=mullvad-browser-bin
+      - type: file
+        path: net.mullvad.MullvadBrowser.desktop
 
       - type: script
         dest-filename: mullvad-browser-wrapper
