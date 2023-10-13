@@ -75,13 +75,13 @@ modules:
         "Mullvad Browser"
     sources:
       - type: archive
-        url: https://cdn.mullvad.net/browser/12.5.6/mullvad-browser-linux64-12.5.6_ALL.tar.xz
-        sha256: 7bb811911322a67106d6132586cdb92d42792831adf2a3f7c296d21b62b668af
+        url: https://cdn.mullvad.net/browser/13.0/mullvad-browser-linux-x86_64-13.0.tar.xz
+        sha256: 62d9068129d0549f70b5a9833ad2d13ae7e13c9f4a8b357c8f990adba889f996
         x-checker-data:
           type: json
           url: https://cdn.mullvad.net/browser/update_responses/update_1/release/downloads.json
           version-query: .version
-          url-query: .downloads.linux64.ALL.binary
+          url-query: .downloads."linux-x86_64".ALL.binary
           is-main-source: true
 
       # Use the upstream launcher, but avoid modifying read-only application files
