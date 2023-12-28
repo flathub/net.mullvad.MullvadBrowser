@@ -26,7 +26,7 @@
        *) # No more options
            break
            ;;
-@@ -227,48 +215,16 @@
+@@ -227,36 +215,6 @@
    ln -nsf ~/.config/ibus/bus .config/ibus
  fi
  
@@ -60,7 +60,10 @@
 -HOME="${PWD}"
 -export HOME
 -
- 
+ # Prevent disk leaks in $HOME/.local/share (tor-browser#17560)
+ local_dir="$HOME/.local/"
+ share_dir="$local_dir/share"
+@@ -275,7 +233,7 @@
  
  
  # Set up custom bundled fonts. See fonts-conf(5).
@@ -69,7 +72,9 @@
  export FONTCONFIG_FILE="fonts.conf"
  
  # Avoid overwriting user's dconf values. Fixes #27903.
- export GSETTINGS_BACKEND=memory
+@@ -285,8 +243,6 @@
+ # $HOME/.cache/nvidia. We we can easily disable it.
+ export __GL_SHADER_DISK_CACHE=0
  
 -cd "${HOME}"
 -
