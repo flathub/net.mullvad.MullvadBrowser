@@ -1,0 +1,27 @@
+--- mullvad-browser/Browser/start-mullvad-browser	2023-04-16 00:00:00.0 +0000
++++ mullvad-browser/Browser/start-mullvad-browser.1	2023-04-16 00:00:00.0 +0000
+@@ -254,9 +254,6 @@
+ 	exit 0
+ fi
+ 
+-HOME="${PWD}"
+-export HOME
+-
+ # Prevent disk leaks in $HOME/.local/share (tor-browser#17560)
+ local_dir="$HOME/.local/"
+ share_dir="$local_dir/share"
+@@ -275,9 +272,13 @@
+ 
+ 
+ # Set up custom bundled fonts. See fonts-conf(5).
+-export FONTCONFIG_PATH="${HOME}/fontconfig"
++export FONTCONFIG_PATH="${PWD}/fontconfig"
+ export FONTCONFIG_FILE="fonts.conf"
+ 
++# Rebuild fontconfig cache
++fc-cache
++
++
+ # Avoid overwriting user's dconf values. Fixes #27903.
+ export GSETTINGS_BACKEND=memory
+ 

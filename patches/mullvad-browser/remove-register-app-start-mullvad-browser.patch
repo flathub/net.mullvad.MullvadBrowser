@@ -26,7 +26,7 @@
        *) # No more options
            break
            ;;
-@@ -227,36 +215,6 @@
+@@ -227,14 +215,6 @@
    ln -nsf ~/.config/ibus/bus .config/ibus
  fi
  
@@ -38,46 +38,35 @@
 -sed -i -e "s,^Icon=.*,Icon=$PWD/browser/chrome/icons/default/default128.png,g" start-mullvad-browser.desktop
 -sed -i -e "s,^Exec=.*,Exec=sh -c '\"$PWD/start-mullvad-browser\" --detach || ([ !  -x \"$PWD/start-mullvad-browser\" ] \&\& \"\$(dirname \"\$*\")\"/Browser/start-mullvad-browser --detach)' dummy %k,g" ../start-mullvad-browser.desktop
 -
--if [ "$register_desktop_app" -eq 1 ]; then
--	mkdir -p "$HOME/.local/share/applications/"
--	cp ../start-mullvad-browser.desktop "$HOME/.local/share/applications/"
--	update-desktop-database "$HOME/.local/share/applications/"
--	printf "Mullvad Browser has been registered as a desktop app for this user in ~/.local/share/applications/\n"
--	exit 0
+ if [ "$register_desktop_app" -eq 1 ]; then
+ 	mkdir -p "$HOME/.local/share/applications/"
+ 	cp ../start-mullvad-browser.desktop "$HOME/.local/share/applications/"
+@@ -257,20 +237,6 @@
+ HOME="${PWD}"
+ export HOME
+ 
+-# Prevent disk leaks in $HOME/.local/share (tor-browser#17560)
+-local_dir="$HOME/.local/"
+-share_dir="$local_dir/share"
+-if [ -d "$share_dir" ]; then
+-    ( srm -r "$share_dir" ||
+-      wipe -r "$share_dir" ||
+-      find "$share_dir" -type f -exec shred -u {} \; ;
+-      rm -rf "$share_dir"
+-    ) > /dev/null 2>&1
+-else
+-    mkdir -p "$local_dir"
 -fi
+-ln -fs /dev/null "$share_dir"
 -
--if [ "$register_desktop_app" -eq -1 ]; then
--	if [ -e "$HOME/.local/share/applications/start-mullvad-browser.desktop" ]; then
--		rm -f "$HOME/.local/share/applications/start-mullvad-browser.desktop"
--		update-desktop-database "$HOME/.local/share/applications/"
--		printf "Mullvad Browser has been removed as a user desktop app (from ~/.local/share/applications/)\n"
--	else
--		printf "Mullvad Browser does not appear to be a desktop app (not present in ~/.local/share/applications/)\n"
--	fi
--	exit 0
--fi
--
--HOME="${PWD}"
--export HOME
--
- # Prevent disk leaks in $HOME/.local/share (tor-browser#17560)
- local_dir="$HOME/.local/"
- share_dir="$local_dir/share"
-@@ -275,7 +233,7 @@
  
  
- # Set up custom bundled fonts. See fonts-conf(5).
--export FONTCONFIG_PATH="${HOME}/fontconfig"
-+export FONTCONFIG_PATH="${PWD}/fontconfig"
- export FONTCONFIG_FILE="fonts.conf"
  
- # Avoid overwriting user's dconf values. Fixes #27903.
-@@ -285,8 +243,6 @@
+@@ -285,7 +251,6 @@
  # $HOME/.cache/nvidia. We we can easily disable it.
  export __GL_SHADER_DISK_CACHE=0
  
 -cd "${HOME}"
--
+ 
  # We pass all additional command-line arguments we get to Firefox.
  #
- # The --class parameter was added to fix bug trac#11102 (X11).
