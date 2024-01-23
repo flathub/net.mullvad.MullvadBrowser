@@ -41,28 +41,30 @@
  if [ "$register_desktop_app" -eq 1 ]; then
  	mkdir -p "$HOME/.local/share/applications/"
  	cp ../start-mullvad-browser.desktop "$HOME/.local/share/applications/"
-@@ -257,20 +237,6 @@
- HOME="${PWD}"
- export HOME
- 
--# Prevent disk leaks in $HOME/.local/share (tor-browser#17560)
+@@ -267,22 +247,6 @@
+ 	  rm -rf "$leaky"
+ 	) > /dev/null 2>&1
+ }
 -local_dir="$HOME/.local/"
 -share_dir="$local_dir/share"
--if [ -d "$share_dir" ]; then
--    ( srm -r "$share_dir" ||
--      wipe -r "$share_dir" ||
--      find "$share_dir" -type f -exec shred -u {} \; ;
--      rm -rf "$share_dir"
--    ) > /dev/null 2>&1
--else
--    mkdir -p "$local_dir"
+-# We don't want to mess with symlinks, possibly pointing outside the
+-# Browser directory (tor-browser-build#41050).
+-# We're not using realpath/readlink for consistency with the (possibly
+-# outdated) availability assumptions made elsewhere in this script.
+-if ! [ -L "$local_dir" -o -L "$share_dir" ]; then
+-	if [ -d "$share_dir" ]; then
+-		for leaky_path in "gvfs-metadata" "recently-used.xbel"; do
+-			erase_leaky "$share_dir/$leaky_path"
+-		done
+-	else
+-		mkdir -p "$local_dir"
+-	fi
+-	ln -fs /dev/null "$share_dir"
 -fi
--ln -fs /dev/null "$share_dir"
--
+ [ -L "$HOME/.cache" ] || erase_leaky "$HOME/.cache/nvidia"
  
  
- 
-@@ -285,7 +251,6 @@
+@@ -299,7 +263,6 @@
  # $HOME/.cache/nvidia. We we can easily disable it.
  export __GL_SHADER_DISK_CACHE=0
  
