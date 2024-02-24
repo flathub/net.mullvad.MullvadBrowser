@@ -48,11 +48,20 @@
 
     <screenshots>
         <screenshot type="default">
-            https://github.com/flathub/net.mullvad.MullvadBrowser/blob/f651843b2d54beb8ecedf16d87ef36c78a8f4964/screenshots/Mullvad%20Browser%20-%20Screenshot%201.png</screenshot>
+            <image>
+                https://github.com/flathub/net.mullvad.MullvadBrowser/blob/f651843b2d54beb8ecedf16d87ef36c78a8f4964/screenshots/Mullvad%20Browser%20-%20Screenshot%201.png
+            </image>
+        </screenshot>
         <screenshot>
-            https://github.com/flathub/net.mullvad.MullvadBrowser/blob/f651843b2d54beb8ecedf16d87ef36c78a8f4964/screenshots/Mullvad%20Browser%20-%20Screenshot%202.png</screenshot>
+            <image>
+                https://github.com/flathub/net.mullvad.MullvadBrowser/blob/f651843b2d54beb8ecedf16d87ef36c78a8f4964/screenshots/Mullvad%20Browser%20-%20Screenshot%202.png
+            </image>
+        </screenshot>
         <screenshot>
-            https://github.com/flathub/net.mullvad.MullvadBrowser/blob/f651843b2d54beb8ecedf16d87ef36c78a8f4964/screenshots/Mullvad%20Browser%20-%20Screenshot%203.png</screenshot>
+            <image>
+                https://github.com/flathub/net.mullvad.MullvadBrowser/blob/f651843b2d54beb8ecedf16d87ef36c78a8f4964/screenshots/Mullvad%20Browser%20-%20Screenshot%203.png
+            </image>
+        </screenshot>
     </screenshots>
 
     <content_rating type="oars-1.1">
