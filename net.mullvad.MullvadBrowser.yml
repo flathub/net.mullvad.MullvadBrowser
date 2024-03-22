@@ -69,12 +69,12 @@ modules:
       # Desktop Entry
       - install -Dm644 net.mullvad.MullvadBrowser.desktop "${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop"
       - desktop-file-edit "${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop"
-        --set-key "Icon" --set-value "${FLATPAK_ID}"
-        --set-key "Name" --set-value "Mullvad Browser"
+        --set-key "Icon" --set-value "${FLATPAK_ID}" --set-key "Name" --set-value
+        "Mullvad Browser"
     sources:
       - type: archive
-        url: https://cdn.mullvad.net/browser/13.0.12/mullvad-browser-linux-x86_64-13.0.12.tar.xz
-        sha256: aaacf7b5d89cda6b81408e895dcd3fbb105e7a7585607378dcaeea25e7bdabbf
+        url: https://cdn.mullvad.net/browser/13.0.13/mullvad-browser-linux-x86_64-13.0.13.tar.xz
+        sha256: 080249b35e14f73b25e4f8b2648c176191b8759cfe0aa9fbb03f6edd2fbf5af0
         x-checker-data:
           type: json
           url: https://cdn.mullvad.net/browser/update_responses/update_1/release/downloads.json
