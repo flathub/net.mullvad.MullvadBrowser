@@ -64,7 +64,7 @@ modules:
 
       # Make it store profiles to `~/.mullvad/mullvadbrowser` instead of `../Data`
       # https://github.com/flathub/flathub/pull/4052#issuecomment-1499032696
-      - touch "${FLATPAK_DEST}/lib/mullvad-browser/system-install"
+      - touch "${FLATPAK_DEST}/lib/mullvad-browser/is-packaged-app"
 
       # Desktop Entry
       - install -Dm644 net.mullvad.MullvadBrowser.desktop "${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop"
