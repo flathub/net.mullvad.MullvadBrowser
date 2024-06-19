@@ -82,12 +82,6 @@ modules:
           url-query: .downloads."linux-x86_64".ALL.binary
           is-main-source: true
 
-      # Use the upstream launcher, but avoid modifying read-only application files
-      # https://github.com/flathub/flathub/pull/4052#issuecomment-1509726091
-      # diff -Naur mullvad-browser/Browser/start-mullvad-browser mullvad-browser/Browser/start-mullvad-browser.1
-      - type: patch
-        path: patches/mullvad-browser/remove-register-app-start-mullvad-browser.patch
-
       - type: file
         url: https://gitlab.torproject.org/tpo/applications/mullvad-browser/-/raw/e712cb197b83778cbda85e96525dd56ada25945e/browser/branding/mb-release/firefox.svg
         sha256: 3159b3ab1d3c9393d60f9589a75ec10bf9a3e23f4665be2bf63fa64d916ebc8b
