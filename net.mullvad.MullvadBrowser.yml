@@ -86,8 +86,6 @@ modules:
       # https://github.com/flathub/flathub/pull/4052#issuecomment-1509726091
       # diff -Naur mullvad-browser/Browser/start-mullvad-browser mullvad-browser/Browser/start-mullvad-browser.1
       - type: patch
-        path: patches/mullvad-browser/fix-font-leakage.patch
-      - type: patch
         path: patches/mullvad-browser/remove-register-app-start-mullvad-browser.patch
 
       - type: file
