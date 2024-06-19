@@ -24,7 +24,8 @@ finish-args:
   - --socket=pulseaudio
   - --filesystem=xdg-run/pipewire-0
   # profiles
-  - --persist=.mullvad
+  - --persist=.mullvad-browser
+  - --persist=.mullvad # old location
   # Smartcard access - Requires flatpak >= 1.3.2
   - --socket=pcsc
   - --socket=cups
