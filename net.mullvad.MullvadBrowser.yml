@@ -1,6 +1,6 @@
 app-id: net.mullvad.MullvadBrowser
 runtime: org.freedesktop.Platform
-runtime-version: &sdk-version '23.08'
+runtime-version: &sdk-version '24.08'
 sdk: org.freedesktop.Sdk
 base: org.mozilla.firefox.BaseApp
 base-version: *sdk-version
@@ -19,7 +19,8 @@ finish-args:
   - --share=network
   # Use `--socket=wayland` + `--socket=x11` like firefox does. `--socket=fallback-x11`` should be removed when app prefers x11.
   # https://github.com/flathub/flathub/pull/4052#discussion_r1164379207
-  - --socket=wayland
+  # Bug 43092: Disable Wayland by default in 14.0 [tor-browser]
+  # - --socket=wayland
   - --socket=x11
   - --socket=pulseaudio
   - --filesystem=xdg-run/pipewire-0
@@ -34,6 +35,7 @@ finish-args:
   - --talk-name=org.freedesktop.FileManager1
   - --talk-name=org.gnome.SessionManager
   - --talk-name=org.freedesktop.ScreenSaver
+  - --talk-name=org.gnome.Mutter.IdleMonitor
   - --talk-name=org.gtk.vfs.*
   - --system-talk-name=org.freedesktop.RealtimeKit1
   - --system-talk-name=org.freedesktop.login1
@@ -43,7 +45,7 @@ finish-args:
   - --system-talk-name=org.freedesktop.NetworkManager
   - --filesystem=xdg-download:create
   # the author doesn't control the domain mozilla.org
-  - --own-name=org.mozilla.mullvad_browser.*
+  - --own-name=org.mozilla.mullvadbrowser.*
   # Player widget: https://gitlab.torproject.org/tpo/applications/mullvad-browser/-/blob/497b87ad9c0af590c418df414024f13bab6a16c6/widget/gtk/MPRISServiceHandler.h#L19
   - --own-name=org.mpris.MediaPlayer2.firefox.*
 
@@ -74,8 +76,8 @@ modules:
         "Mullvad Browser"
     sources:
       - type: archive
-        url: https://cdn.mullvad.net/browser/13.5.9/mullvad-browser-linux-x86_64-13.5.9.tar.xz
-        sha256: 872158238d887c5634bea92a22790b40059263c7e5b2658637c09a5c1c176c60
+        url: https://cdn.mullvad.net/browser/14.0/mullvad-browser-linux-x86_64-14.0.tar.xz
+        sha256: 0f9af556c6e36acc069b99dc81d48838915f0cc5c1657d890c67134d1564a15b
         x-checker-data:
           type: json
           url: https://cdn.mullvad.net/browser/update_responses/update_1/release/downloads.json
