@@ -35,6 +35,8 @@ finish-args:
   - --talk-name=org.freedesktop.FileManager1
   - --talk-name=org.gnome.SessionManager
   - --talk-name=org.freedesktop.ScreenSaver
+  - --talk-name=org.gnome.Mutter.IdleMonitor
+  
   - --talk-name=org.gtk.vfs.*
   - --system-talk-name=org.freedesktop.RealtimeKit1
   - --system-talk-name=org.freedesktop.login1
@@ -44,7 +46,7 @@ finish-args:
   - --system-talk-name=org.freedesktop.NetworkManager
   - --filesystem=xdg-download:create
   # the author doesn't control the domain mozilla.org
-  - --own-name=org.mozilla.mullvad_browser.*
+  - --own-name=org.mozilla.mullvadbrowser.*
   # Player widget: https://gitlab.torproject.org/tpo/applications/mullvad-browser/-/blob/497b87ad9c0af590c418df414024f13bab6a16c6/widget/gtk/MPRISServiceHandler.h#L19
   - --own-name=org.mpris.MediaPlayer2.firefox.*
 
