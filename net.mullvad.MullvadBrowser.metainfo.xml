@@ -26,8 +26,11 @@
     <launchable type="desktop-id">net.mullvad.MullvadBrowser.desktop</launchable>
 
     <releases>
-        <release version="14.0" date="2024-11-13">
+        <release version="14.0.3" date="2024-11-25">
             <description></description>
+        </release>
+        <release version="14.0" date="2024-11-13">
+            <description/>
         </release>
         <release version="13.5.9" date="2024-10-24">
             <description/>
