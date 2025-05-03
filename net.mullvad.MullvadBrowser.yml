@@ -61,7 +61,7 @@ modules:
 
       - mv Browser/ "${FLATPAK_DEST}/lib/mullvad-browser/"
       - install -Dm755 mullvad-browser-wrapper "${FLATPAK_DEST}/bin/mullvad-browser"
-      - install -Dm644 firefox.svg "${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg"
+      - install -Dm644 "${FLATPAK_DEST}/lib/mullvad-browser/browser/chrome/icons/default/about-logo.svg" "${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg"
       - install -Dm644 distribution.ini "${FLATPAK_DEST}/lib/mullvad-browser/distribution/distribution.ini"
       - install -Dm644 net.mullvad.MullvadBrowser.metainfo.xml "${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml"
 
@@ -84,11 +84,6 @@ modules:
           version-query: .version
           url-query: .downloads."linux-x86_64".ALL.binary
           is-main-source: true
-
-      - type: file
-        url: https://gitlab.torproject.org/tpo/applications/mullvad-browser/-/raw/e712cb197b83778cbda85e96525dd56ada25945e/browser/branding/mb-release/firefox.svg
-        sha256: 3159b3ab1d3c9393d60f9589a75ec10bf9a3e23f4665be2bf63fa64d916ebc8b
-        dest-filename: firefox.svg
 
       - type: file
         path: distribution.ini
