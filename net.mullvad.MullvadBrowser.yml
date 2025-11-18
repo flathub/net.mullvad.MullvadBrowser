@@ -17,13 +17,9 @@ finish-args:
   - --device=all
   - --share=ipc
   - --share=network
-  # Use `--socket=wayland` + `--socket=x11` like firefox does. `--socket=fallback-x11`` should be removed when app prefers x11.
-  # https://github.com/flathub/flathub/pull/4052#discussion_r1164379207
-  # Bug 43092: Disable Wayland by default in 14.0 [tor-browser]
-  # - --socket=wayland
-  - --socket=x11
+  - --socket=wayland
+  - --socket=fallback-x11
   - --socket=pulseaudio
-  - --filesystem=xdg-run/pipewire-0
   # profiles
   - --persist=.mullvad-browser
   - --persist=.mullvad # old location
