@@ -5,9 +5,7 @@
     <name>Mullvad Browser</name>
     <summary>Free the internet from mass surveillance</summary>
     <description>
-        <p>
-            NOTE: This wrapper is not verified by, affiliated with, or supported by Mullvad VPN AB.
-        </p>
+        <p>**NOTE: This wrapper is not verified by, affiliated with, or supported by Mullvad VPN AB.**</p>
         <p>
             The Mullvad Browser is a privacy-focused web browser developed in a collaboration
             between Mullvad VPN and the Tor Project. It’s designed to minimize tracking and
