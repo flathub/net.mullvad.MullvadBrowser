@@ -1,16 +1,10 @@
 app-id: net.mullvad.MullvadBrowser
 runtime: org.freedesktop.Platform
-runtime-version: &sdk-version '24.08'
+runtime-version: &sdk-version '25.08'
 sdk: org.freedesktop.Sdk
 base: org.mozilla.firefox.BaseApp
 base-version: *sdk-version
 command: mullvad-browser
-add-extensions:
-  org.freedesktop.Platform.ffmpeg-full:
-    directory: lib/ffmpeg
-    add-ld-path: .
-    no-autodownload: true
-    version: *sdk-version
 
 finish-args:
   # For webcam
@@ -44,9 +38,6 @@ finish-args:
   - --own-name=org.mozilla.mullvadbrowser.*
   # Player widget: https://gitlab.torproject.org/tpo/applications/mullvad-browser/-/blob/497b87ad9c0af590c418df414024f13bab6a16c6/widget/gtk/MPRISServiceHandler.h#L19
   - --own-name=org.mpris.MediaPlayer2.firefox.*
-
-cleanup-commands:
-  - mkdir -p ${FLATPAK_DEST}/lib/ffmpeg
 
 modules:
   - name: mullvad-browser
