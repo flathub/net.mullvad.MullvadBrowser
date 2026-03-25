@@ -64,8 +64,8 @@ modules:
         "Mullvad Browser"
     sources:
       - type: archive
-        url: https://cdn.mullvad.net/browser/15.0.7/mullvad-browser-linux-x86_64-15.0.7.tar.xz
-        sha256: 523d87e8e355a67dc4b7330d97cc6a3807fa51e3ba14600ab721fd0ca87defa5
+        url: https://cdn.mullvad.net/browser/15.0.8/mullvad-browser-linux-x86_64-15.0.8.tar.xz
+        sha256: 12ec83c20368544084928ebac459e6b5e54d9cfb27d8f3a55d153d892f553e5a
         x-checker-data:
           type: json
           url: https://cdn.mullvad.net/browser/update_responses/update_1/release/downloads.json
