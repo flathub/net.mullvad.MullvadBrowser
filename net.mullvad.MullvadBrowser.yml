@@ -88,6 +88,11 @@ modules:
         commands:
           - export TMPDIR="${XDG_RUNTIME_DIR}/app/${FLATPAK_ID}"
 
+          # Load bundled fonts for font fingerprinting resistance
+          - export FONTCONFIG_FILE=/app/lib/mullvad-browser/fonts/fonts.conf
+          - export FONTCONFIG_PATH=/app/lib/mullvad-browser/fonts
+          - fc-cache -fv
+
           # Mullvad Browser must be launched from the application directory
           - cd "/app/lib/mullvad-browser"
 
