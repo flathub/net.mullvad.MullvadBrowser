@@ -66,6 +66,8 @@ modules:
       - type: archive
         url: https://cdn.mullvad.net/browser/16.0a6/mullvad-browser-linux-x86_64-16.0a6.tar.xz
         sha256: 186c2eff3a52e0899c2d4a08bd721019c7862f35b8f965e80aa70a83e2f144fc
+        only-arches:
+          - x86_64
         x-checker-data:
           type: json
           url: https://cdn.mullvad.net/browser/update_responses/update_1/alpha/download-linux-x86_64.json
@@ -76,6 +78,8 @@ modules:
       - type: archive
         url: https://cdn.mullvad.net/browser/16.0a6/mullvad-browser-linux-aarch64-16.0a6.tar.xz
         sha256: a2e08e10842347c009ab060483c83698084dbea2a468a69583fe36841a31f913
+        only-arches:
+          - aarch64
         x-checker-data:
           type: json
           url: https://cdn.mullvad.net/browser/update_responses/update_1/alpha/download-linux-aarch64.json
