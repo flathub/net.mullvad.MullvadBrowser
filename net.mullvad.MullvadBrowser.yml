@@ -1,6 +1,6 @@
 app-id: net.mullvad.MullvadBrowser
 runtime: org.freedesktop.Platform
-runtime-version: &sdk-version '25.08'
+runtime-version: &sdk-version '26.08'
 sdk: org.freedesktop.Sdk
 base: org.mozilla.firefox.BaseApp
 base-version: *sdk-version
