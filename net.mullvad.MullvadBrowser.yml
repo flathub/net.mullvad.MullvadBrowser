@@ -48,7 +48,8 @@ modules:
 
       - mv Browser/ "${FLATPAK_DEST}/lib/mullvad-browser/"
       - install -Dm755 mullvad-browser-wrapper "${FLATPAK_DEST}/bin/mullvad-browser"
-      - install -Dm644 "${FLATPAK_DEST}/lib/mullvad-browser/browser/chrome/icons/default/about-logo.svg"
+      - install -Dm644 
+        "${FLATPAK_DEST}/lib/mullvad-browser/browser/chrome/icons/default/about-logo.svg"
         "${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg"
       - install -Dm644 distribution.ini "${FLATPAK_DEST}/lib/mullvad-browser/distribution/distribution.ini"
       - install -Dm644 net.mullvad.MullvadBrowser.metainfo.xml "${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml"
@@ -64,11 +65,12 @@ modules:
         "Mullvad Browser"
     sources:
       - type: archive
-        url: https://cdn.mullvad.net/browser/15.0.25/mullvad-browser-linux-x86_64-15.0.25.tar.xz
-        sha256: be553c915882a8e9adc6b484f51749ec38c21f454b59dd1f712b38bf0b42de0c
+        url: https://cdn.mullvad.net/browser/16.0/mullvad-browser-linux-x86_64-16.0.tar.xz
+        sha256: aa571c6dc00aad214af9a92e414f3a6bd9e12139b4819f5af2f3aaaa3d9f4aa3
         x-checker-data:
           type: json
-          url: https://cdn.mullvad.net/browser/update_responses/update_1/release/download-linux-x86_64.json
+          url: 
+            https://cdn.mullvad.net/browser/update_responses/update_1/release/download-linux-x86_64.json
           version-query: .version
           url-query: .binary
           is-main-source: true
