@@ -63,8 +63,8 @@ modules:
         "Mullvad Browser"
     sources:
       - type: archive
-        url: https://cdn.mullvad.net/browser/16.0.2/mullvad-browser-linux-x86_64-16.0.2.tar.xz
-        sha256: c03bea00314eb3446280ca851f71a763b00c7c0d1dd47d425d0495063ae6c9fe
+        url: https://cdn.mullvad.net/browser/16.0.3/mullvad-browser-linux-x86_64-16.0.3.tar.xz
+        sha256: 73deadb98edae3ca88d6607681bd904e9cba61efd429386970e2ee5749f86bed
         only-arches: [x86_64]
         x-checker-data:
           type: json
@@ -73,8 +73,8 @@ modules:
           url-query: .binary
           is-main-source: true
       - type: archive
-        url: https://cdn.mullvad.net/browser/16.0.2/mullvad-browser-linux-aarch64-16.0.2.tar.xz
-        sha256: 55664322d0e5cb0a71d40eae48e40497b417acbffbb0b91edcaecbe8b9023e9d
+        url: https://cdn.mullvad.net/browser/16.0.3/mullvad-browser-linux-aarch64-16.0.3.tar.xz
+        sha256: 88acbf4c731932a2f38246d7b53d2ebea82e0683a8c4d43dd332bd3403ecb862
         only-arches: [aarch64]
         x-checker-data:
           type: json
